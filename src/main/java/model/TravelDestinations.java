@@ -1,12 +1,24 @@
 package model;
 
 public class TravelDestinations {
-    public int id;
-    public String name;
-    public String country;
-    public int popularity;
-    public int isVisited;
-    public String bestSeason;
+    private int id;
+    private String name;
+    private String country;
+    private int popularity;
+    private int isVisited;
+    private String bestSeason;
+
+    public TravelDestinations(int id, String name, String country, int popularity, int isVisited, String bestSeason) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+        this.popularity = popularity;
+        this.isVisited = isVisited;
+        this.bestSeason = bestSeason;
+    }
+
+    public TravelDestinations() {
+    }
 
     public int getId() {
         return id;
