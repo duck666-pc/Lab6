@@ -9,6 +9,8 @@ import java.util.List;
 
 public class TravelDestinationsRepository {
 
+
+
     public List<TravelDestinations> getAll() {
         List<TravelDestinations> destinations = new ArrayList<>();
 

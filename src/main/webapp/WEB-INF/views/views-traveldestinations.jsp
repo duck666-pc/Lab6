@@ -7,9 +7,9 @@
     <title>Travel Destinations</title>
 </head>
 <body>
-<h1>List of Travel Destinations</h1>
+<h1>Danh sách</h1>
 
-<a href="${pageContext.request.contextPath}/travel/new" class="btn btn-primary">Add New Destination</a>
+<a href="${pageContext.request.contextPath}/travel/new" class="btn btn-primary">Thêm mới</a>
 
 <br><br>
 

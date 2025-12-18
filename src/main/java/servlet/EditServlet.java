@@ -1,5 +1,4 @@
 package servlet;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,27 +8,19 @@ import model.TravelDestinations;
 import repository.TravelDestinationsRepository;
 
 import java.io.IOException;
-
 @WebServlet(name = "EditServlet", urlPatterns = "/travel/edit")
 public class EditServlet extends HttpServlet {
-
     private TravelDestinationsRepository repository = new TravelDestinationsRepository();
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idParam = request.getParameter("id");
-
         if (idParam != null) {
             try {
                 int id = Integer.parseInt(idParam);
                 TravelDestinations destination = repository.getById(id);
-
                 if (destination != null) {
                     request.setAttribute("destination", destination);
-                    request.getRequestDispatcher("/WEB-INF/views/edit-traveldestinations.jsp")
-                            .forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/views/edit-traveldestinations.jsp").forward(request, response);
                 } else {
                     response.sendRedirect(request.getContextPath() + "/travel");
                 }
@@ -40,25 +31,19 @@ public class EditServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/travel");
         }
     }
-
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-
         String idParam = request.getParameter("id");
         String name = request.getParameter("name");
         String country = request.getParameter("country");
         String popularityStr = request.getParameter("popularity");
         String isVisitedStr = request.getParameter("isVisited");
         String bestSeason = request.getParameter("bestSeason");
-
         try {
             int id = Integer.parseInt(idParam);
             int popularity = Integer.parseInt(popularityStr);
             int isVisited = Integer.parseInt(isVisitedStr);
-
             TravelDestinations destination = new TravelDestinations();
             destination.setId(id);
             destination.setName(name);
@@ -66,22 +51,16 @@ public class EditServlet extends HttpServlet {
             destination.setPopularity(popularity);
             destination.setIsVisited(isVisited);
             destination.setBestSeason(bestSeason);
-
             int result = repository.update(destination);
-
-            if (result > 0) {
-                response.sendRedirect(request.getContextPath() + "/travel/detail?id=" + id);
+            if (result > 0) { response.sendRedirect(request.getContextPath() + "/travel/detail?id=" + id);
             } else {
                 request.setAttribute("error", "Failed to update destination");
                 request.setAttribute("destination", destination);
-                request.getRequestDispatcher("/WEB-INF/views/edit-traveldestinations.jsp")
-                        .forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/views/edit-traveldestinations.jsp").forward(request, response);
             }
-
         } catch (NumberFormatException e) {
             request.setAttribute("error", "Invalid input format");
-            request.getRequestDispatcher("/WEB-INF/views/edit-traveldestinations.jsp")
-                    .forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/edit-traveldestinations.jsp").forward(request, response);
         }
     }
 }

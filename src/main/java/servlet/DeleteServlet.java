@@ -1,5 +1,4 @@
 package servlet;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,18 +7,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import repository.TravelDestinationsRepository;
 
 import java.io.IOException;
-
 @WebServlet(name = "DeleteServlet", urlPatterns = "/travel/delete")
 public class DeleteServlet extends HttpServlet {
-
     private TravelDestinationsRepository repository = new TravelDestinationsRepository();
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idParam = request.getParameter("id");
-
         if (idParam != null) {
             try {
                 int id = Integer.parseInt(idParam);
@@ -28,16 +21,11 @@ public class DeleteServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
         response.sendRedirect(request.getContextPath() + "/travel");
     }
-
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idParam = request.getParameter("id");
-
         if (idParam != null) {
             try {
                 int id = Integer.parseInt(idParam);
@@ -52,7 +40,6 @@ public class DeleteServlet extends HttpServlet {
                 request.getSession().setAttribute("error", "Invalid ID format");
             }
         }
-
         response.sendRedirect(request.getContextPath() + "/travel");
     }
 }

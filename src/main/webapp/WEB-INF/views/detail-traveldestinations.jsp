@@ -4,11 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Travel Destination Detail</title>
+    <title>Chi tiết</title>
 </head>
 <body>
 <div class="container">
-    <h1>Travel Destination Details</h1>
+    <h1>Chi tiết</h1>
 
     <div class="detail-row">
         <span class="detail-label">ID:</span>

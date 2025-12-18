@@ -4,44 +4,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit Travel Destination</title>
+    <title>Chỉnh sửa</title>
 </head>
 <body>
 <div class="container">
-    <h1>Edit Travel Destination</h1>
-
+    <h1>Chỉnh sửa</h1>
     <c:if test="${not empty error}">
         <div class="error">${error}</div>
     </c:if>
-
-    <form action="${pageContext.request.contextPath}/travel/edit?id=${destination.id}"
-          method="post">
-
+    <form action="${pageContext.request.contextPath}/travel/edit?id=${destination.id}" method="post">
         <div class="form-group">
             <label for="id">ID:</label>
-            <input type="text" id="id" name="id" value="${destination.id}"
-                   class="readonly" readonly>
+            <input type="text" id="id" name="id" value="${destination.id}" class="readonly" readonly>
         </div>
-
         <div class="form-group">
             <label for="name">Destination Name: *</label>
-            <input type="text" id="name" name="name"
-                   value="${destination.name}" required>
+            <input type="text" id="name" name="name" value="${destination.name}" required>
         </div>
-
         <div class="form-group">
             <label for="country">Country: *</label>
-            <input type="text" id="country" name="country"
-                   value="${destination.country}" required>
+            <input type="text" id="country" name="country" value="${destination.country}" required>
         </div>
-
         <div class="form-group">
             <label for="popularity">Popularity (1-10): *</label>
-            <input type="number" id="popularity" name="popularity"
-                   value="${destination.popularity}"
-                   min="1" max="10" required>
+            <input type="number" id="popularity" name="popularity" value="${destination.popularity}" min="1" max="10" required>
         </div>
-
         <div class="form-group">
             <label for="isVisited">Is Visited: *</label>
             <select id="isVisited" name="isVisited" required>
@@ -49,18 +36,13 @@
                 <option value="1" ${destination.isVisited == 1 ? 'selected' : ''}>Yes</option>
             </select>
         </div>
-
         <div class="form-group">
             <label for="bestSeason">Best Season: *</label>
-            <input type="text" id="bestSeason" name="bestSeason"
-                   value="${destination.bestSeason}"
-                   placeholder="e.g., Spring, Summer, Fall, Winter" required>
+            <input type="text" id="bestSeason" name="bestSeason" value="${destination.bestSeason}" placeholder="e.g., Spring, Summer, Fall, Winter" required>
         </div>
-
         <div class="button-group">
             <button type="submit" class="btn btn-primary">Update Destination</button>
-            <a href="${pageContext.request.contextPath}/travel/detail?id=${destination.id}"
-               class="btn btn-secondary">Cancel</a>
+            <a href="${pageContext.request.contextPath}/travel/detail?id=${destination.id}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>

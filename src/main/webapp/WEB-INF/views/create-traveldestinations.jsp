@@ -3,11 +3,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Add New Travel Destination</title>
+    <title>Thêm mới</title>
 </head>
 <body>
 <div class="container">
-    <h1>Add New Travel Destination</h1>
+    <h1>Thêm mới</h1>
 
     <c:if test="${not empty error}">
         <div class="error">${error}</div>
@@ -27,7 +27,7 @@
         <div class="form-group">
             <label for="popularity">Popularity (1-10): *</label>
             <input type="number" id="popularity" name="popularity"
-                   min="1" max="10" required>
+                   min="1" max="5" required>
         </div>
 
         <div class="form-group">
